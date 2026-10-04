@@ -56,7 +56,7 @@ I learn by doing: assemble, test, measure, break and rebuild until it works prop
 Want to talk security, infrastructure or embedded systems? Reach me on [LinkedIn](https://www.linkedin.com/in/hikaru-ogasawara) or at [hogasawara2311@outlook.com](mailto:hogasawara2311@outlook.com). The [portfolio](https://hikaru-0gasawara.github.io/Portifolio/) has my résumé in PT, EN and 日本語, plus a recruiter mode for when you're in a hurry.
 
 <p align="center">
-  <a href="https://hikaru-0gasawara.github.io/Portifolio/"><img src="assets/footer.svg" width="100%" alt="CONTINUE? Thanks for playing · ありがとう."></a>
+  <a href="https://hikaru-0gasawara.github.io/Portifolio/"><img src="assets/footer.svg" width="100%" alt="CONTINUE? counts down from 9; at 0 it is GAME OVER, with total contributions as the score. Thanks for playing · ありがとう."></a>
 </p>
 
 <details>
