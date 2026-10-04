@@ -29,7 +29,7 @@ def coin(x, y, s):
 
 def render(cfg, data, path):
     now = dt.datetime.now(dt.timezone.utc)
-    doc = Doc(W, H, "Obrigado pela visita", f"Rodapé: CONTINUE? com contagem regressiva. Renderizado em {now:%Y-%m-%d %H:%M} UTC.")
+    doc = Doc(W, H, "Thanks for playing", f"Footer: CONTINUE? with a countdown. Rendered {now:%Y-%m-%d %H:%M} UTC.")
     doc.style(
         ".dg{animation:cd 10s steps(1,end) infinite;opacity:0}.dg9{opacity:1}"
         "@keyframes cd{0%{opacity:1}10%,100%{opacity:0}}"
@@ -46,17 +46,17 @@ def render(cfg, data, path):
         cls = "dg dg9" if d == 9 else "dg"
         doc.add(f'<g class="{cls}" style="animation-delay:{i}s">{text(cx, y, str(d), "jp tx", 40)}</g>')
     thanks = cfg["footer"]["thanks"]
-    doc.add(spans(x + 2, y + 34, [(thanks, "mut"), ("  ·  ", "faint"), ("thanks for visiting", "mut"), ("  ·  ", "faint")], 13),
-            text(x + 2 + tw(thanks + "  ·  thanks for visiting  ·  ", 13), y + 34, "ありがとう", "jp mut", 14))
+    doc.add(spans(x + 2, y + 34, [(thanks, "mut"), ("  ·  ", "faint")], 13),
+            text(x + 2 + tw(thanks + "  ·  ", 13), y + 34, "ありがとう", "jp mut", 14))
 
     # coin slot
     doc.add(f'<g class="spin">{coin(875, 32, 6)}</g>',
-            text(905, 120, "INSIRA UMA FICHA", "jp gold blink", 16, anchor="middle"))
+            text(905, 120, "INSERT COIN", "jp gold blink", 16, anchor="middle"))
 
     # render stamp
     doc.add(f'<path d="M1 {H - 40.5}H{W - 1}" stroke="{LN}"/>')
-    stamp = [("renderizado ", "faint"), (f"{now:%Y-%m-%d %H:%M} UTC", "dim"), (" · ", "faint"),
-             ("atualizado todo dia via GitHub Actions", "dim"), (" · ", "faint"), ("só SVG, sem JavaScript", "dim"),
+    stamp = [("rendered ", "faint"), (f"{now:%Y-%m-%d %H:%M} UTC", "dim"), (" · ", "faint"),
+             ("refreshed daily by GitHub Actions", "dim"), (" · ", "faint"), ("just SVG, no JavaScript", "dim"),
              (" · ", "faint"), (cfg["footer"]["credits"], "gold")]
     doc.add(spans(20, H - 15, stamp, 11), text(W - 20, H - 15, "↑↑↓↓←→←→BA", "faint", 11, anchor="end"))
     doc.save(path)

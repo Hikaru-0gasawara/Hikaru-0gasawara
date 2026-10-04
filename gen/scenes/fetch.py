@@ -12,16 +12,20 @@ FS, LH = 13.5, 19.6  # info column
 PFS = 8  # portrait font size; cells are PFS*0.6 wide, PFS*1.2 tall
 
 
-def uptime(start, today):
-    y, m, d = today.year - start.year, today.month - start.month, today.day - start.day
+def uptime(born, now):
+    """Age as years, months, days; a day only counts once the birth hour has passed."""
+    now = now.astimezone(born.tzinfo)
+    y, m, d = now.year - born.year, now.month - born.month, now.day - born.day
+    if (now.hour, now.minute) < (born.hour, born.minute):
+        d -= 1
     if d < 0:
         m -= 1
-        d += (today.replace(day=1) - dt.timedelta(days=1)).day
+        d += (now.replace(day=1) - dt.timedelta(days=1)).day
     if m < 0:
         y -= 1
         m += 12
-    parts = [(y, "ano", "anos"), (m, "mês", "meses"), (d, "dia", "dias")]
-    return ", ".join(f"{v} {one if v == 1 else many}" for v, one, many in parts if v)
+    parts = [(y, "year"), (m, "month"), (d, "day")]
+    return ", ".join(f"{v} {unit}{'' if v == 1 else 's'}" for v, unit in parts if v)
 
 
 def portrait(x0, y0):
@@ -62,8 +66,8 @@ def row(x, y, key, value, width, kcls="gold", vcls="tx"):
 
 
 def render(cfg, data, path):
-    doc = Doc(W, H, f"{cfg['name']} — sobre mim",
-              "Cartão estilo neofetch: retrato em ASCII gerado da foto, informações pessoais e números do GitHub.")
+    doc = Doc(W, H, f"{cfg['name']} — about me",
+              "neofetch-style card: ASCII portrait made from a photo, personal info and GitHub numbers.")
     doc.style(
         f"text{{font-size:{FS}px}}"
         f".pt text{{font-size:{PFS}px}}"
@@ -74,7 +78,7 @@ def render(cfg, data, path):
         "@keyframes scan{0%{transform:translateY(-80px)}55%,100%{transform:translateY(620px)}}"
         ".cur{animation:blink 1s steps(1,end) infinite}@keyframes blink{50%{opacity:0}}"
     )
-    doc.add(panel(0, 0, W, H, "okaru@lab: ~ — neofetch", "sobre mim"))
+    doc.add(panel(0, 0, W, H, "okaru@lab: ~ — neofetch", "about me"))
 
     # portrait
     px, py = 26, 54
@@ -95,7 +99,8 @@ def render(cfg, data, path):
     user, machine = host.split("@")
     lines.append(spans(x, y, [(user, "gold2 b"), ("@", "dim"), (machine, "gold2 b"), (" ", ""),
                               ("─" * (width - len(host) - 1), "faint")], FS))
-    values = {"uptime": uptime(data["created"], data["today"]) + " (GitHub)", "email": cfg["links"]["email"]}
+    born = dt.datetime.fromisoformat(cfg["born"])
+    values = {"uptime": uptime(born, dt.datetime.now(dt.timezone.utc)), "email": cfg["links"]["email"]}
     for item in cfg["fetch"]:
         y += LH
         if item is None:
@@ -111,11 +116,11 @@ def render(cfg, data, path):
     # GitHub numbers, two per line like Andrew6rant's card
     lines.append(spans(x, y, [("— ", "faint"), ("GitHub", "mut"), (" " + "─" * (width - 9), "faint")], FS))
     half = (width - 3) // 2
-    contrib = f"{num(data['repo_count'])}" + (f" {{Contribuiu: {data['contributed_to']}}}"
+    contrib = f"{num(data['repo_count'])}" + (f" {{Contributed: {data['contributed_to']}}}"
                                               if data.get("contributed_to") is not None else "")
     pairs = [(("Repos", contrib), ("Stars", num(data["stars"]))),
-             (("Commits", num(data["commits_total"])), ("Seguidores", num(data["followers"]))),
-             (("Contribuições", num(data["contrib_total"])), ("PRs", num(data["prs"])))]
+             (("Commits", num(data["commits_total"])), ("Followers", num(data["followers"]))),
+             (("Contributions", num(data["contrib_total"])), ("PRs", num(data["prs"])))]
     for (k1, v1), (k2, v2) in pairs:
         y += LH
         d1 = half - len(k1) - 2 - len(v1) - 1

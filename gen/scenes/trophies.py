@@ -1,7 +1,7 @@
 """Trophy shelf: eight pixel trophies ranked C → SSS from live numbers, with
 progress to the next rank. Locked ones stay grey."""
 
-from ..svg import DIM, FAINT, LN, PN2, Doc, num, panel, rect, text
+from ..svg import DIM, FAINT, LN, PN2, Doc, num, panel, rect, side_pad, text
 
 W, H = 495, 250
 RANKS = ["C", "B", "A", "AA", "AAA", "S", "SS", "SSS"]
@@ -48,22 +48,22 @@ def render(cfg, data, path):
     years = (data["today"] - data["created"]).days / 365.25
     items = [  # title, value, thresholds C..SSS, unit shown after the numbers
         ("Commits", data["commits_total"], [1, 10, 100, 200, 500, 1000, 2000, 4000], ""),
-        ("Repositórios", data["repo_count"], [1, 5, 10, 20, 30, 40, 45, 50], ""),
+        ("Repositories", data["repo_count"], [1, 5, 10, 20, 30, 40, 45, 50], ""),
         ("Pull requests", data["prs"], [1, 10, 20, 50, 100, 200, 500, 1000], ""),
-        ("Contribuições", data["contrib_total"], [1, 50, 100, 250, 500, 1000, 2500, 5000], ""),
-        ("Poliglota", len(data["languages"]), [1, 2, 4, 6, 8, 10, 12, 15], " ling."),
-        ("Veterania", int(years), [1, 2, 3, 4, 5, 7, 10, 15], " anos"),
-        ("Estrelas", data["stars"], [1, 10, 30, 50, 100, 200, 700, 2000], ""),
-        ("Seguidores", data["followers"], [1, 10, 20, 50, 100, 200, 400, 1000], ""),
+        ("Contributions", data["contrib_total"], [1, 50, 100, 250, 500, 1000, 2500, 5000], ""),
+        ("Polyglot", len(data["languages"]), [1, 2, 4, 6, 8, 10, 12, 15], " langs"),
+        ("Veteran", int(years), [1, 2, 3, 4, 5, 7, 10, 15], " yrs"),
+        ("Stars", data["stars"], [1, 10, 30, 50, 100, 200, 700, 2000], ""),
+        ("Followers", data["followers"], [1, 10, 20, 50, 100, 200, 400, 1000], ""),
     ]
     got = [rank_of(v, steps) for _, v, steps, _ in items]
     unlocked = sum(1 for g, _ in got if g)
-    doc = Doc(W, H, "GitHub — troféus",
-              "; ".join(f"{t}: {g or 'bloqueado'}" for (t, *_), (g, _) in zip(items, got)))
+    doc = Doc(W, H, "GitHub — trophies",
+              "; ".join(f"{t}: {g or 'locked'}" for (t, *_), (g, _) in zip(items, got)), pad=side_pad("right"))
     doc.style(".tt{font-size:9.5px;letter-spacing:1px}.tv{font-size:10.5px}.rk{font-size:13px}"
               ".cupin{animation:pop .5s cubic-bezier(.2,.9,.3,1.4) backwards}"
               "@keyframes pop{from{opacity:0;transform:translateY(6px)}}")
-    doc.add(panel(0, 0, W, H, "Conquistas", f"{unlocked}/{len(items)} desbloqueadas"))
+    doc.add(panel(0, 0, W, H, "Achievements", f"{unlocked}/{len(items)} unlocked"))
 
     cw, ch = (W - 24) / 4, 98
     for i, ((title, value, steps, unit), (rank, nxt)) in enumerate(zip(items, got)):
@@ -82,7 +82,7 @@ def render(cfg, data, path):
             frac = max(0.0, min(1.0, (value - prev) / (nxt[1] - prev)))
             sub = f"{num(value)} / {num(nxt[1])}{unit}"
         else:
-            frac, sub = 1.0, f"{num(value)}{unit} · máx."
+            frac, sub = 1.0, f"{num(value)}{unit} · max"
         bx, bw = x + 14, cw - 28
         doc.add(text(cx, y + 79, sub, "tv dim" if rank else "tv faint", anchor="middle"),
                 rect(bx, y + 86, bw, 3, "rgba(232,228,212,.08)"),

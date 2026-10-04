@@ -58,16 +58,25 @@ def esc(s):
     return html.escape(str(s), quote=True)
 
 
-MONTHS = "jan fev mar abr mai jun jul ago set out nov dez".split()
+MONTHS = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split()
+
+# README layout: half-width cards sit side by side at exactly 50% each, so the
+# gap between them is drawn inside the SVGs as transparent padding (GitHub
+# strips CSS, and whitespace between images would break the alignment)
+GAP = 10
+
+
+def side_pad(side):
+    return {"left": (0, GAP), "right": (GAP, 0)}.get(side, (0, 0))
 
 
 def num(n):
-    """pt-BR thousands separator; None shows as a dash."""
-    return "—" if n is None else f"{n:,}".replace(",", ".")
+    """Thousands separator; None shows as a dash."""
+    return "—" if n is None else f"{n:,}"
 
 
-def date_pt(d, year=True):
-    return f"{d.day} {MONTHS[d.month - 1]}" + (f" {d.year}" if year else "")
+def date_en(d, year=True):
+    return f"{MONTHS[d.month - 1]} {d.day}" + (f", {d.year}" if year else "")
 
 
 def tw(text, size, spacing=0.0):
@@ -153,8 +162,10 @@ _TAG_RE = re.compile(r"<[^>]+>")
 
 
 class Doc:
-    def __init__(self, w, h, title, desc=""):
+    def __init__(self, w, h, title, desc="", pad=(0, 0), bg=BG):
+        """w×h is the drawing; pad=(left, right) adds transparent margin beside it."""
         self.w, self.h, self.title, self.desc = w, h, title, desc
+        self.pad, self.bg = pad, bg
         self.css, self.defs, self.body = [], [], []
 
     def add(self, *parts):
@@ -181,11 +192,15 @@ class Doc:
         defs = f"<defs>{''.join(self.defs)}</defs>" if self.defs else ""
         css = self._font_css(body) + BASE_CSS + "".join(self.css)
         desc = f"<desc>{esc(self.desc)}</desc>" if self.desc else ""
+        left, right = self.pad
+        w = self.w + left + right
+        bg = rect(0, 0, self.w, self.h, self.bg) if self.bg else ""
+        content = f'<g transform="translate({left:g} 0)">{bg}{body}</g>' if left else bg + body
         return (
-            f'<svg xmlns="http://www.w3.org/2000/svg" width="{self.w}" height="{self.h}" '
-            f'viewBox="0 0 {self.w} {self.h}" role="img" aria-labelledby="title">'
+            f'<svg xmlns="http://www.w3.org/2000/svg" width="{w:g}" height="{self.h}" '
+            f'viewBox="0 0 {w:g} {self.h}" role="img" aria-labelledby="title">'
             f'<title id="title">{esc(self.title)}</title>{desc}{defs}<style>{css}</style>'
-            f'{rect(0, 0, self.w, self.h, BG)}{body}</svg>\n'
+            f'{content}</svg>\n'
         )
 
     def save(self, path):

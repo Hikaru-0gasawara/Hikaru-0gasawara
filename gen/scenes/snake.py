@@ -2,8 +2,9 @@
 background in GitHub's light and dark themes.
 
 The workflow runs snk first and leaves its SVG at dist/snake.svg (or
-$SNAKE_SVG). Locally, without that file, the previous assets/snake.svg is
-kept; if there is none yet, a static grid from the calendar stands in."""
+$SNAKE_SVG). Locally, without that file, the animation nested in the previous
+assets/snake.svg is reused; if there is none yet, a static grid from the
+calendar stands in."""
 
 import datetime as dt
 import os
@@ -32,18 +33,31 @@ def static_grid(data, x0, y0):
     return "".join(out)
 
 
-def render(cfg, data, path):
-    src = os.environ.get("SNAKE_SVG", os.path.join(ROOT, "dist", "snake.svg"))
-    if not os.path.exists(src) and os.path.exists(path):
-        print(f"  kept {os.path.relpath(path)} (no fresh snake from snk)")
-        return
-    doc = Doc(W, H, "Cobrinha comendo o gráfico de contribuições",
-              "Animação do Platane/snk: a cobrinha percorre o gráfico de contribuições dos últimos 12 meses.")
-    doc.add(panel(0, 0, W, H, "snake · contribuições", "últimos 12 meses"))
-    sx, sy = 60, 46
+NESTED = re.compile(r'<svg x="[^"]+" y="[^"]+" width="[^"]+" height="[^"]+" viewBox="([^"]+)">(.*?)</svg>', re.S)
+
+
+def snk_source(src, path):
+    """The fresh snk output, or else the animation already nested in our last panel."""
     if os.path.exists(src):
         with open(src, encoding="utf-8") as f:
-            snk = f.read()
+            return f.read()
+    if os.path.exists(path):
+        with open(path, encoding="utf-8") as f:
+            m = NESTED.search(f.read())
+        if m:
+            print("  reusing the snake from the previous panel")
+            return f'<svg viewBox="{m.group(1)}">{m.group(2)}</svg>'
+    return None
+
+
+def render(cfg, data, path):
+    src = os.environ.get("SNAKE_SVG", os.path.join(ROOT, "dist", "snake.svg"))
+    snk = snk_source(src, path)
+    doc = Doc(W, H, "Snake eating the contribution graph",
+              "Platane/snk animation: a snake eats its way through the last 12 months of contributions.")
+    doc.add(panel(0, 0, W, H, "snake · contributions", "last 12 months"))
+    sx, sy = 60, 46
+    if snk:
         m = re.match(r"\s*<svg\b([^>]*)>", snk)
         vb = re.search(r'viewBox="([^"]+)"', m.group(1)).group(1)
         _, _, vw, vh = (float(v) for v in vb.split())
@@ -53,12 +67,12 @@ def render(cfg, data, path):
                 f'viewBox="{vb}">{inner}</svg>')
     else:
         doc.add(static_grid(data, sx + 16, sy + 32),
-                text(W / 2, sy + 168, "a cobrinha aparece depois do primeiro run do GitHub Actions", "dim", 11, anchor="middle"))
+                text(W / 2, sy + 168, "the snake shows up after the first GitHub Actions run", "dim", 11, anchor="middle"))
     y = H - 20
-    doc.add(text(20, y, "cada quadrado é um dia; a cobrinha come os que têm contribuição", "dim", 11))
+    doc.add(text(20, y, "each square is a day; the snake eats the ones with contributions", "dim", 11))
     lx = W - 20 - 5 * 16 - 44
-    doc.add(label(lx - 8, y, "menos", anchor="end"))
+    doc.add(label(lx - 8, y, "less", anchor="end"))
     for i, c in enumerate(DOTS):
         doc.add(rect(lx + i * 16, y - 10, 12, 12, c, extra=' rx="2"'))
-    doc.add(label(lx + 5 * 16 + 4, y, "mais"))
+    doc.add(label(lx + 5 * 16 + 4, y, "more"))
     doc.save(path)

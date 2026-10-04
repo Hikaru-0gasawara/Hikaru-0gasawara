@@ -6,15 +6,12 @@ import datetime as dt
 import os
 
 from ..github import LINGUIST_COLORS
-from ..svg import BG, DIM, FAINT, GOLD, GOLD2, LN, LN2, PN2, Doc, icon, panel, rect, spans, text, tw, wrap
+from ..svg import (BG, DIM, FAINT, GOLD, GOLD2, LN, LN2, PN2, Doc, date_en, icon, panel, rect, side_pad, spans,
+                   text, tw, wrap)
 
 W, H = 495, 258
-MONTHS = "jan fev mar abr mai jun jul ago set out nov dez".split()
-
-
 def when(iso):
-    d = dt.date.fromisoformat(iso)
-    return f"{d.day} {MONTHS[d.month - 1]} {d.year}"
+    return date_en(dt.date.fromisoformat(iso))
 
 
 def repo_info(data, full):
@@ -49,15 +46,15 @@ def footer(y, info, link_text):
             x += 15 + tw(info["lang"], 12) + 18
         out.append(spans(x, fy, [("★ ", "gold"), (str(info["stars"]), "mut")], 12))
         x += tw(f"★ {info['stars']}", 12) + 18
-        out.append(spans(x, fy, [("atualizado ", "dim"), (when(info["pushed"]), "mut")], 12))
+        out.append(spans(x, fy, [("updated ", "dim"), (when(info["pushed"]), "mut")], 12))
     else:
-        out.append(text(16, fy, "sem repositório público", "ft dim"))
+        out.append(text(16, fy, "no public repository", "ft dim"))
     out.append(text(W - 16, fy, link_text, "ft gold2", anchor="end"))
     return "".join(out)
 
 
-def card(p, info, path):
-    doc = Doc(W, H, f"{p['title']} — {p['tags']}", p["line"])
+def card(p, info, path, side):
+    doc = Doc(W, H, f"{p['title']} — {p['tags']}", p["line"], pad=side_pad(side))
     doc.style(".chip{fill:#C9CBBE}.ft{font-size:12px}.ds{font-size:13.5px}"
               ".gl{animation:gl 5s ease-in-out infinite}@keyframes gl{0%,100%{opacity:.35}50%{opacity:.9}}")
     doc.add(panel(0, 0, W, H, f"{p['num']} · {p['tags']}", p["period"]))
@@ -65,13 +62,13 @@ def card(p, info, path):
     doc.add(rect(16.5, 50.5, 43, 43, PN2, "rgba(216,178,74,.42)"),
             icon(p["icon"], 25, 59, 26, p["color"]))
     doc.add(text(74, 70, p["title"], "tx b", 22))
-    doc.add(text(74, 90, info["full"] if info else "projeto acadêmico", "dim", 11.5))
+    doc.add(text(74, 90, info["full"] if info else "academic project", "dim", 11.5))
     desc = p["line"] + (f" ({p['credit']}.)" if p.get("credit") else "")
     lines = wrap(desc, int((W - 32) / (13.5 * .6)))[:4]
     for k, ln in enumerate(lines):
         doc.add(text(16, 124 + k * 20, ln, "ds mut"))
     doc.add(chips(16, 124 + 4 * 20 - 6, p["stack"], 11, max_x=W - 16))
-    doc.add(footer(H - 36, info, "abrir repositório →" if info else "ver no portfólio →"))
+    doc.add(footer(H - 36, info, "open repository →" if info else "see portfolio →"))
     doc.save(path)
 
 
@@ -94,10 +91,10 @@ def tv(x, y, s=4):
 
 def wide(c, path):
     w, h = 1000, 196
-    doc = Doc(w, h, f"{c['title']} — o site é um jogo", c["line"])
+    doc = Doc(w, h, f"{c['title']} — the site is a game", c["line"])
     doc.style(".chip{fill:#C9CBBE}.ft{font-size:11.5px}.ds{font-size:13px}"
               ".blink{animation:blink 1.4s steps(1,end) infinite}@keyframes blink{70%{opacity:0}}")
-    doc.add(panel(0, 0, w, h, "05 · web · pixel art", "no ar"))
+    doc.add(panel(0, 0, w, h, "05 · web · pixel art", "live"))
     doc.add(tv(28, 52, 5))
     x = 178
     doc.add(text(x, 76, c["title"], "tx b", 24),
@@ -108,13 +105,13 @@ def wide(c, path):
     doc.add(f'<path d="M{w - 210.5} 48V{h - 14}" stroke="{LN}"/>',
             text(w - 105, 98, "PRESS START", "jp gold2 blink", 22, anchor="middle"),
             text(w - 105, 128, c["langs"], "jp mut", 14, anchor="middle"),
-            text(w - 105, 160, "abrir portfólio →", "ft gold", anchor="middle"))
+            text(w - 105, 160, "open portfolio →", "ft gold", anchor="middle"))
     doc.save(path)
 
 
 def render(cfg, data, path):
     out = os.path.dirname(path)
-    for p in cfg["projects"]:
-        card(p, repo_info(data, p.get("repo")), os.path.join(out, f"project-{p['id']}.svg"))
+    for i, p in enumerate(cfg["projects"]):
+        card(p, repo_info(data, p.get("repo")), os.path.join(out, f"project-{p['id']}.svg"), ("left", "right")[i % 2])
     c = cfg["portfolio_card"]
     wide(c, os.path.join(out, "project-portfolio.svg"))

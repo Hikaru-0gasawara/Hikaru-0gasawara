@@ -13,8 +13,8 @@ def render(cfg, data, path):
     days = [today - dt.timedelta(days=DAYS - 1 - i) for i in range(DAYS)]
     vals = [data["cal"].get(d, 0) for d in days]
     total = sum(vals)
-    doc = Doc(W, H, f"GitHub — atividade dos últimos {DAYS} dias",
-              f"{total} contribuições entre {days[0]} e {days[-1]}; máximo de {max(vals)} em um dia.")
+    doc = Doc(W, H, f"GitHub — activity over the last {DAYS} days",
+              f"{total} contributions between {days[0]} and {days[-1]}; at most {max(vals)} in a day.")
     top = max(2, max(vals))
     top += top % 2  # even, so the middle gridline is a whole number
 
@@ -36,7 +36,7 @@ def render(cfg, data, path):
               f"@keyframes draw{{from{{stroke-dashoffset:{length:.0f}}}}}"
               ".ar{animation:fade 1s ease-out 1.2s backwards}@keyframes fade{from{opacity:0}}"
               ".pt{animation:fade .3s ease-out backwards}")
-    doc.add(panel(0, 0, W, H, f"Atividade · últimos {DAYS} dias", f"{num(total)} contribuições"))
+    doc.add(panel(0, 0, W, H, f"Activity · last {DAYS} days", f"{num(total)} contributions"))
 
     # grid + y labels
     for k in range(3):

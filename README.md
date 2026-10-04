@@ -1,93 +1,74 @@
 <!--
-  Cada painel deste perfil é um SVG desenhado por gen/ (Python, sem dependências)
-  e redesenhado todo dia pelo .github/workflows/profile.yml com números ao vivo da API do GitHub.
-  ↑ ↑ ↓ ↓ ← → ← → B A  — no portfólio isso vale 30 vidas.
+  Every panel on this profile is an SVG drawn by gen/ (Python, no dependencies)
+  and redrawn daily by .github/workflows/profile.yml with live numbers from the GitHub API.
+  ↑ ↑ ↓ ↓ ← → ← → B A  — on the portfolio that's worth 30 lives.
 -->
 
 <p align="center">
-  <a href="https://hikaru-0gasawara.github.io/Portifolio/">
-    <img src="assets/banner.svg" width="100%" alt="HIKARU OGASAWARA — 小笠原 光 · Analista de Segurança Jr · São Paulo, Brasil. Do pino ao servidor: pino, registrador, firmware, MQTT/TLS, rede, firewall, servidor, SIEM.">
-  </a>
+  <a href="https://hikaru-0gasawara.github.io/Portifolio/"><img src="assets/banner.svg" width="100%" alt="HIKARU OGASAWARA — 小笠原 光 · Junior Security Analyst · São Paulo, Brazil. From pin to server: pin, register, firmware, MQTT/TLS, network, firewall, server, SIEM."></a>
 </p>
+
+<p align="center"><a href="https://hikaru-0gasawara.github.io/Portifolio/"><img src="assets/button-portfolio.svg" width="33.333%" alt="Portfolio"></a><a href="https://www.linkedin.com/in/hikaru-ogasawara"><img src="assets/button-linkedin.svg" width="33.333%" alt="LinkedIn"></a><a href="mailto:hogasawara2311@outlook.com"><img src="assets/button-email.svg" width="33.333%" alt="E-mail"></a></p>
+
+### `$ whoami` &nbsp;·&nbsp; about
 
 <p align="center">
-  <a href="https://hikaru-0gasawara.github.io/Portifolio/"><img alt="Portfólio" src="https://img.shields.io/badge/portf%C3%B3lio-D8B24A?style=for-the-badge&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZD0iTTYgOGgxMmE0IDQgMCAwIDEgNCA0djNhMyAzIDAgMCAxLTUuNCAxLjhMMTUgMTVIOWwtMS42IDEuOEEzIDMgMCAwIDEgMiAxNXYtM2E0IDQgMCAwIDEgNC00ek03IDEwLjV2M001LjUgMTJoM00xNS41IDExLjVoLjAxTTE3LjUgMTMuNWguMDEiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzBBMEYwQiIgc3Ryb2tlLXdpZHRoPSIyLjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg%3D%3D"></a>
-  <a href="https://www.linkedin.com/in/hikaru-ogasawara"><img alt="LinkedIn" src="https://img.shields.io/badge/linkedin-8FD3A6?style=for-the-badge&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZD0iTTQgOGgxNnYxMUg0ek05IDhWNWg2djNNNCAxM2gxNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMEEwRjBCIiBzdHJva2Utd2lkdGg9IjIuMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8%2BPC9zdmc%2B"></a>
-  <a href="mailto:hogasawara2311@outlook.com"><img alt="E-mail" src="https://img.shields.io/badge/e--mail-7FB2DA?style=for-the-badge&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZD0iTTMgNmgxOHYxMkgzek0zIDdsOSA2IDktNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMEEwRjBCIiBzdHJva2Utd2lkdGg9IjIuMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8%2BPC9zdmc%2B"></a>
+  <img src="assets/fetch.svg" width="100%" alt="ASCII portrait next to a neofetch-style card: OS Windows 11, Pop!_OS and Kali Linux; São Paulo, Brazil; Junior Security Analyst; uptime counted from birth; Computer Engineering at Ibmec (2023–2027); Python, Java, C/C++ and SQL; C++ and MicroPython for firmware; Portuguese, English, Japanese and Spanish; SIEM, Kali Linux, IPFire and iptables; Proxmox, AD/DC, DNS, DHCP and Linux; ESP32, Arduino UNO and Raspberry Pi Pico; Ycare and Kochi Kenjinkai; GitHub numbers.">
 </p>
 
-### `$ whoami` &nbsp;·&nbsp; sobre mim
+I started with hardware: connecting a sensor, reading a register, understanding why a signal came in distorted. Then came infrastructure, and then security. I like the boundary where physical becomes logical and where logic can be attacked. Today I'm a **Junior Security Analyst**.
 
-<p align="center">
-  <img src="assets/fetch.svg" width="100%" alt="Retrato em ASCII ao lado de um cartão estilo neofetch: OS Windows 11, Pop!_OS e Kali Linux; São Paulo, Brasil; Analista de Segurança Jr; Engenharia da Computação no Ibmec (2023–2027); Python, Java, C/C++ e SQL; C++ e MicroPython no firmware; português, inglês, japonês e espanhol; SIEM, Kali Linux, IPFire e iptables; Proxmox, AD/DC, DNS, DHCP e Linux; ESP32, Arduino UNO e Raspberry Pi Pico; Ycare e Kochi Kenjinkai; números do GitHub.">
-</p>
-
-Comecei pelo hardware: ligar um sensor, ler um registrador, entender por que o sinal chegou torto. Daí fui pra infraestrutura e, de lá, pra segurança. Gosto de ficar na fronteira, onde o físico vira lógico e onde o lógico pode ser atacado. Hoje sou **Analista de Segurança Jr**.
-
-Sou de aprender fazendo: montar, testar, medir, quebrar e montar de novo até ficar do jeito certo, entendendo o porquê antes de aceitar o como. Estudo Engenharia da Computação no Ibmec e, fora do teclado, sou vice-presidente da Ycare, que todo segundo sábado do mês leva cestas de alimentos e itens de higiene a uma comunidade.
+I learn by doing: assemble, test, measure, break and rebuild until it works properly, understanding why before accepting how. I study Computer Engineering at Ibmec and, away from the keyboard, I'm vice president of Ycare, a volunteer organization that delivers food and hygiene baskets to a community on the second Saturday of every month.
 
 ```diff
-@@ bio.md · d15ca1c · fix(bio): tirar os sapatos @@
-- Prefiro trabalhar de sapato: camada sobre camada entre mim e a máquina.
-+ Prefiro trabalhar descalço: bare metal, sem nada entre mim e a máquina.
+@@ bio.md · d15ca1c · fix(bio): take off shoes @@
+- I prefer working with shoes on: layer after layer between me and the machine.
++ I prefer working barefoot: bare metal, nothing between me and the machine.
 ```
 
-### `$ inventory --equipped` &nbsp;·&nbsp; tecnologias
+### `$ inventory --equipped` &nbsp;·&nbsp; stack
 
 <p align="center">
-  <img src="assets/loadout.svg" width="100%" alt="Equipado: C/C++, Python, SQL, sistemas embarcados, Kali Linux, SIEM, Git e Java. Mochila: ESP32, Arduino UNO, Raspberry Pi Pico, MicroPython, LogiSim, I²C, UART, PWM, MQTT sobre TLS, Proxmox, AD/DC, IPFire, iptables, ufw, DNS/DHCP, Linux, TypeScript com React, HTML/CSS, Jupyter, NumPy, pandas, Power BI, AWS Lambda, Vitest, Playwright, JUnit e Postman.">
+  <img src="assets/loadout.svg" width="100%" alt="Equipped: C/C++, Python, SQL, embedded systems, Kali Linux, SIEM, Git and Java. Backpack: ESP32, Arduino UNO, Raspberry Pi Pico, MicroPython, LogiSim, I²C, UART, PWM, MQTT over TLS, Proxmox, AD/DC, IPFire, iptables, ufw, DNS/DHCP, Linux, TypeScript with React, HTML/CSS, Jupyter, NumPy, pandas, Power BI, AWS Lambda, Vitest, Playwright, JUnit and Postman.">
 </p>
 
-### `$ ls ~/projetos` &nbsp;·&nbsp; projetos
+### `$ ls ~/projects` &nbsp;·&nbsp; projects
 
+<p align="center"><a href="https://hikaru-0gasawara.github.io/Portifolio/"><img src="assets/project-infra-lab.svg" width="50%" alt="Infrastructure lab: AD/DC, IPFire firewall and SIEM built from scratch, virtualized on Proxmox, checked with Kali Linux."></a><a href="https://github.com/Hikaru-0gasawara/IoT-PoolHardWareTest"><img src="assets/project-aquasense.svg" width="50%" alt="AquaSense IoT: ESP32 firmware for 7 water parameters, MQTT/TLS, React dashboard and an Alexa skill."></a></p>
+<p align="center"><a href="https://github.com/Hikaru-0gasawara/IoT-SafeSistem"><img src="assets/project-cofre.svg" width="50%" alt="Electronic safe: the same safe ported to Arduino UNO, Raspberry Pi Pico and ESP32."></a><a href="https://github.com/0tavio-Pires/Projeto_Back-End"><img src="assets/project-cptm.svg" width="50%" alt="CPTM assets: Spring Boot REST API with 14 endpoints for trains, stations and lines."></a></p>
 <p align="center">
-  <a href="https://hikaru-0gasawara.github.io/Portifolio/"><img src="assets/project-infra-lab.svg" width="49%" alt="Lab de infraestrutura: AD/DC, firewall IPFire e SIEM do zero, virtualizados no Proxmox, validados com Kali Linux."></a>
-  <a href="https://github.com/Hikaru-0gasawara/IoT-PoolHardWareTest"><img src="assets/project-aquasense.svg" width="49%" alt="AquaSense IoT: firmware ESP32 para 7 parâmetros da água, MQTT/TLS, dashboard React e skill da Alexa."></a>
-</p>
-<p align="center">
-  <a href="https://github.com/Hikaru-0gasawara/IoT-SafeSistem"><img src="assets/project-cofre.svg" width="49%" alt="Cofre eletrônico: o mesmo cofre portado para Arduino UNO, Raspberry Pi Pico e ESP32."></a>
-  <a href="https://github.com/0tavio-Pires/Projeto_Back-End"><img src="assets/project-cptm.svg" width="49%" alt="Ativos da CPTM: API REST em Spring Boot com 14 endpoints para trens, estações e linhas."></a>
-</p>
-<p align="center">
-  <a href="https://hikaru-0gasawara.github.io/Portifolio/"><img src="assets/project-portfolio.svg" width="99%" alt="Portifolio: um quarto em pixel art pra explorar, com TV 3D em WebGL próprio, minijogos, 51 conquistas e modo recrutador. PT, EN e 日本語."></a>
+  <a href="https://hikaru-0gasawara.github.io/Portifolio/"><img src="assets/project-portfolio.svg" width="100%" alt="Portifolio: an explorable pixel-art room with a 3D TV in hand-written WebGL, minigames, 51 achievements and a recruiter mode. PT, EN and 日本語."></a>
 </p>
 
 ### `$ gh status` &nbsp;·&nbsp; github
 
+<p align="center"><img src="assets/stats.svg" width="50%" alt="GitHub stats: contributions, commits, pull requests, issues, stars, followers and level."><img src="assets/langs.svg" width="50%" alt="Most used languages across public repositories."></p>
+<p align="center"><img src="assets/streak.svg" width="50%" alt="Contribution streak: total, current streak and longest streak."><img src="assets/trophies.svg" width="50%" alt="Trophies from C to SSS for commits, repositories, pull requests, contributions, languages, account age, stars and followers."></p>
 <p align="center">
-  <img src="assets/stats.svg" width="49%" alt="Estatísticas do GitHub: contribuições, commits, pull requests, issues, estrelas, seguidores e nível.">
-  <img src="assets/langs.svg" width="49%" alt="Linguagens mais usadas nos repositórios públicos.">
+  <img src="assets/activity.svg" width="100%" alt="Activity graph: contributions per day over the last 31 days.">
 </p>
 <p align="center">
-  <img src="assets/streak.svg" width="49%" alt="Sequência de contribuições: total, sequência atual e maior sequência.">
-  <img src="assets/trophies.svg" width="49%" alt="Troféus de C a SSS por commits, repositórios, pull requests, contribuições, linguagens, tempo de conta, estrelas e seguidores.">
-</p>
-<p align="center">
-  <img src="assets/activity.svg" width="99%" alt="Gráfico de atividade: contribuições por dia nos últimos 31 dias.">
-</p>
-<p align="center">
-  <img src="assets/snake.svg" width="99%" alt="Cobrinha comendo o gráfico de contribuições dos últimos 12 meses.">
+  <img src="assets/snake.svg" width="100%" alt="A snake eating the contribution graph of the last 12 months.">
 </p>
 
-### `$ ping hikaru` &nbsp;·&nbsp; contato
+### `$ ping hikaru` &nbsp;·&nbsp; contact
 
-Quer falar de segurança, infraestrutura ou sistemas embarcados? Me chama no [LinkedIn](https://www.linkedin.com/in/hikaru-ogasawara) ou em [hogasawara2311@outlook.com](mailto:hogasawara2311@outlook.com). O [portfólio](https://hikaru-0gasawara.github.io/Portifolio/) tem os currículos em PT, EN e 日本語, e um modo recrutador pra quem está com pressa.
+Want to talk security, infrastructure or embedded systems? Reach me on [LinkedIn](https://www.linkedin.com/in/hikaru-ogasawara) or at [hogasawara2311@outlook.com](mailto:hogasawara2311@outlook.com). The [portfolio](https://hikaru-0gasawara.github.io/Portifolio/) has my résumé in PT, EN and 日本語, plus a recruiter mode for when you're in a hurry.
 
 <p align="center">
-  <a href="https://hikaru-0gasawara.github.io/Portifolio/">
-    <img src="assets/footer.svg" width="100%" alt="CONTINUE? Obrigado pela visita · thanks for visiting · ありがとう.">
-  </a>
+  <a href="https://hikaru-0gasawara.github.io/Portifolio/"><img src="assets/footer.svg" width="100%" alt="CONTINUE? Thanks for playing · ありがとう."></a>
 </p>
 
 <details>
-<summary><code>$ cat COMO_FUNCIONA.md</code></summary>
+<summary><code>$ cat HOW_IT_WORKS.md</code></summary>
 
 <br>
 
-- Os painéis não dependem de nenhum serviço externo pra abrir: cada um é um SVG gerado por `python -m gen` (só biblioteca padrão) e servido direto deste repositório.
-- `.github/workflows/profile.yml` roda todo dia: o [Platane/snk](https://github.com/Platane/snk) desenha a cobrinha, o gerador busca os números na API GraphQL do GitHub e o bot faz commit de `assets/`.
-- As animações são CSS dentro do SVG (o GitHub mostra imagens via `<img>`, que roda CSS mas nunca JavaScript). As fontes JetBrains Mono e DotGothic16 vão embutidas, só com os caracteres usados.
-- O retrato é a minha foto convertida em ASCII colorido por `gen/tools/portrait.py`; paleta, ícones e o inventário vêm do [portfólio](https://github.com/Hikaru-0gasawara/Portifolio).
-- Pra mudar textos, projetos ou o inventário: `gen/config.json`. Pra testar sem gastar a API: `python -m gen --cache dados.json`.
+- Nothing here depends on an outside service to load: every panel is an SVG generated by `python -m gen` (standard library only) and served straight from this repository.
+- `.github/workflows/profile.yml` runs daily: [Platane/snk](https://github.com/Platane/snk) draws the snake, the generator pulls the numbers from GitHub's GraphQL API, and the bot commits `assets/`.
+- Animations are CSS inside the SVGs (GitHub shows images through `<img>`, which runs CSS but never JavaScript). JetBrains Mono and DotGothic16 are embedded, subset to just the characters used.
+- The link buttons and the side-by-side cards are separate images placed edge to edge; the gaps are drawn inside each SVG, so every row lines up with the full-width panels.
+- The portrait is my photo turned into coloured ASCII by `gen/tools/portrait.py`; the palette, icons and inventory come from the [portfolio](https://github.com/Hikaru-0gasawara/Portifolio).
+- To change texts, projects or the inventory: `gen/config.json`. To iterate without spending API calls: `python -m gen --cache data.json`.
 
 </details>

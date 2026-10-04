@@ -10,8 +10,8 @@ STEP = 3  # seconds each equipped item stays selected
 def render(cfg, data, path):
     equip, bag = cfg["equip"], cfg["bag"]
     n = len(equip)
-    doc = Doc(W, H, "Tecnologias — equipado e mochila",
-              "Equipado: " + ", ".join(e["name"] for e in equip) + ". Mochila: "
+    doc = Doc(W, H, "Stack — equipped and backpack",
+              "Equipped: " + ", ".join(e["name"] for e in equip) + ". Backpack: "
               + "; ".join(f"{k}: {v}" for k, v in cfg["bag_text"]) + ".")
     doc.define('<radialGradient id="slot" cx=".5" cy=".4" r=".64"><stop offset="0" stop-color="#D8B24A" stop-opacity=".10"/>'
                '<stop offset="1" stop-color="#D8B24A" stop-opacity="0"/></radialGradient>'
@@ -31,7 +31,7 @@ def render(cfg, data, path):
 
     # --- equipped -----------------------------------------------------------
     lw = 490
-    doc.add(panel(0, 0, lw, H, "Equipado", "uso diário"))
+    doc.add(panel(0, 0, lw, H, "Equipped", "daily use"))
     size, gap = 106, 8
     gx = (lw - (4 * size + 3 * gap)) / 2
     gy = 50
@@ -65,7 +65,7 @@ def render(cfg, data, path):
 
     # --- backpack -----------------------------------------------------------
     rx, rw = lw + 12, W - lw - 12
-    doc.add(panel(rx, 0, rw, H, "Mochila", f"{len(bag)} itens"))
+    doc.add(panel(rx, 0, rw, H, "Backpack", f"{len(bag)} items"))
     cell = 58
     bx = rx + (rw - 8 * cell) / 2
     byy = 50

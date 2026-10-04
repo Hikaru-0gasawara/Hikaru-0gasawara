@@ -78,7 +78,7 @@ def typing(phrases, x, y, size, prompt_w, type_ms=55, hold_ms=2300, erase_ms=20,
 
 def render(cfg, data, path):
     doc = Doc(W, H, f"{cfg['name']} — {cfg['role']}",
-              "Banner animado: nome em pixel art, caminho do pino ao SIEM e um prompt digitando.")
+              "Animated banner: pixel-block name, the path from pin to SIEM and a typing prompt.")
 
     # backdrop: faint dot grid + CRT scanlines, like the portfolio's TV
     doc.define(
@@ -97,8 +97,7 @@ def render(cfg, data, path):
 
     # window chrome
     doc.add(f'<path d="M0 40.5H{W}" stroke="{LN}"/>',
-            spans(70, 25, [(cfg["login"].lower(), "dim"), (" / ", "faint"), ("README.md", "tx")], 13),
-            label(W - 20, 25, cfg["location"].replace("Brasil", "BR"), "gold", anchor="end"))
+            label(W - 20, 25, cfg["location"], "gold", anchor="end"))
     for i, col in enumerate((GOLD, FAINT, FAINT)):
         doc.add(rect(20 + i * 15, 15, 9, 9, col))
 

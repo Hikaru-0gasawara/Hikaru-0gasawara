@@ -2,7 +2,7 @@
 
 import math
 
-from ..svg import GOLD, GOLD2, LN, PN, PN2, RED, Doc, date_pt, label, num, panel, rect, text
+from ..svg import GOLD, GOLD2, LN, PN, PN2, RED, Doc, date_en, label, num, panel, rect, side_pad, text
 
 W, H = 495, 250
 
@@ -25,9 +25,9 @@ def span(a, b, today):
     if not a:
         return "—"
     if b == today:
-        return f"{date_pt(a, a.year != today.year)} – hoje"
+        return f"{date_en(a, a.year != today.year)} – today"
     same = a.year == b.year
-    return f"{date_pt(a, not same)} – {date_pt(b)}"
+    return f"{date_en(a, not same)} – {date_en(b)}"
 
 
 def flame(x, y, s):
@@ -39,11 +39,12 @@ def flame(x, y, s):
 def render(cfg, data, path):
     today = data["today"]
     cur, best = data["streak_cur"], data["streak_best"]
-    doc = Doc(W, H, "GitHub — sequência de contribuições",
-              f"Total {num(data['contrib_total'])}; sequência atual {cur} dias; maior sequência {best} dias.")
+    doc = Doc(W, H, "GitHub — contribution streak",
+              f"Total {num(data['contrib_total'])}; current streak {cur} days; longest streak {best} days.",
+              pad=side_pad("left"))
     doc.style(".ring{animation:ring 1.2s cubic-bezier(.2,.8,.2,1) .3s backwards}"
               "@keyframes fl{50%{transform:scaleY(1.08)}}")
-    doc.add(panel(0, 0, W, H, "Sequência", f"desde {date_pt(data['first_contrib'])}"))
+    doc.add(panel(0, 0, W, H, "Streak", f"since {date_en(data['first_contrib'])}"))
 
     cols = [W / 6, W / 2, W * 5 / 6]
     doc.add(f'<path d="M{W / 3:.1f} 58V{H - 22}M{2 * W / 3:.1f} 58V{H - 22}" stroke="{LN}"/>')
@@ -51,7 +52,7 @@ def render(cfg, data, path):
     # total
     x = cols[0]
     doc.add(text(x, 140, num(data["contrib_total"]), "tx b", 30, anchor="middle"),
-            label(x, 168, "contribuições", anchor="middle"),
+            label(x, 168, "contributions", anchor="middle"),
             text(x, 190, span(data["first_contrib"], today, today), "dim", 11, anchor="middle"))
 
     # current, inside a ring that fills by day of week (a week = full ring)
@@ -67,14 +68,14 @@ def render(cfg, data, path):
             f'<rect x="{x - 20}" y="{cy - r - 18}" width="40" height="30" fill="{PN}"/>',
             f'<g class="fl">{flame(x - 13.5, fy, 3)}</g>',
             text(x, cy + 11, str(cur), "gold2 b", 32, anchor="middle"),
-            label(x, cy + r + 30, "sequência atual", "gold", anchor="middle"),
-            text(x, cy + r + 52, span(*data["streak_cur_range"], today) if cur else "começa no próximo commit",
+            label(x, cy + r + 30, "current streak", "gold", anchor="middle"),
+            text(x, cy + r + 52, span(*data["streak_cur_range"], today) if cur else "starts with the next commit",
                  "dim", 11, anchor="middle"))
 
     # longest
     x = cols[2]
     a, b = data["streak_best_range"]
     doc.add(text(x, 140, num(best), "tx b", 30, anchor="middle"),
-            label(x, 168, "maior sequência", anchor="middle"),
+            label(x, 168, "longest streak", anchor="middle"),
             text(x, 190, span(a, b, today), "dim", 11, anchor="middle"))
     doc.save(path)
