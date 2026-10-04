@@ -1,0 +1,144 @@
+{
+  "login": "Hikaru-0gasawara",
+  "name": "Hikaru Ogasawara",
+  "name_jp": "小笠原 光",
+  "host": "okaru@lab",
+  "role": "Analista de Segurança Jr",
+  "location": "São Paulo, Brasil",
+  "links": {
+    "portfolio": "https://hikaru-0gasawara.github.io/Portifolio/",
+    "linkedin": "https://www.linkedin.com/in/hikaru-ogasawara",
+    "email": "hogasawara2311@outlook.com"
+  },
+  "skip_repos": ["Hikaru-0gasawara"],
+
+  "banner": {
+    "kicker": "segurança · infraestrutura · sistemas embarcados",
+    "path": ["pino", "registrador", "firmware", "mqtt/tls", "rede", "firewall", "servidor", "siem"]
+  },
+
+  "typing": [
+    "do pino ao servidor.",
+    "onde o físico vira lógico e onde o lógico pode ser atacado.",
+    "entender o porquê antes de aceitar o como.",
+    "kali só dispara com escopo por escrito.",
+    "bare metal, sem nada entre mim e a máquina."
+  ],
+
+  "fetch": [
+    ["OS", "Windows 11, Pop!_OS, Kali Linux"],
+    ["Host", "São Paulo, Brasil"],
+    ["Kernel", "Analista de Segurança Jr"],
+    ["Uptime", "{uptime}"],
+    ["Formação", "Eng. da Computação · Ibmec (2023–2027)"],
+    null,
+    ["Linguagens.Código", "Python, Java, C/C++, SQL"],
+    ["Linguagens.Firmware", "C++, MicroPython"],
+    ["Linguagens.Reais", "Português, English, 日本語, Español"],
+    null,
+    ["Foco.Segurança", "SIEM, Kali Linux, IPFire, iptables"],
+    ["Foco.Infra", "Proxmox, AD/DC, DNS, DHCP, Linux"],
+    ["Foco.Embarcados", "ESP32, Arduino UNO, Raspberry Pi Pico"],
+    null,
+    ["Guildas", "Ycare (vice-presidente), Kochi Kenjinkai"],
+    ["Hobbies", "Magic: The Gathering, Skullgirls, BG3"],
+    "Contato",
+    ["E-mail", "{email}"],
+    ["LinkedIn", "in/hikaru-ogasawara"],
+    ["Portfólio", "hikaru-0gasawara.github.io/Portifolio"],
+    "GitHub"
+  ],
+
+  "equip": [
+    {"short": "C/C++", "name": "C / C++", "slot": "Mão principal", "type": "Firmware", "icon": "cplusplus", "color": "#5B9BD5",
+     "use": "Usado em: firmware do AquaSense (887 linhas) e do cofre.", "flavor": "Chega no registrador sem pedir licença."},
+    {"short": "Python", "name": "Python", "slot": "Mão secundária", "type": "Software", "icon": "python", "color": "#5A9BD0",
+     "use": "Usado em: automação de e-mails (pywin32, openpyxl) e gabinete 3D (trimesh).", "flavor": "Resolve em dez linhas o que ia levar uma tarde."},
+    {"short": "SQL", "name": "SQL", "slot": "Amuleto", "type": "Banco de dados", "icon": "db", "color": "#E8E4D4",
+     "use": "Usado em: consultas e modelagem em bancos relacionais.", "flavor": "SELECT * FROM problemas WHERE resolvido = 0;"},
+    {"short": "Embarcados", "name": "Sistemas embarcados / Infra", "slot": "Armadura", "type": "Hardware e infra", "icon": "chip", "color": "#F0CE6A",
+     "use": "ESP32, Arduino e Pi Pico na bancada; Proxmox, Linux e Windows Server no lab.", "flavor": "Do pino ao servidor."},
+    {"short": "Kali", "name": "Kali Linux", "slot": "Arco", "type": "Segurança", "icon": "kalilinux", "color": "#8DB9D6",
+     "use": "Usado em: validação das configurações do lab de infraestrutura.", "flavor": "Só dispara com escopo por escrito."},
+    {"short": "SIEM", "name": "SIEM", "slot": "Elmo", "type": "Segurança", "icon": "radar", "color": "#8FD3A6",
+     "use": "Usado em: coleta e correlação de eventos no lab.", "flavor": "Enxerga o ataque pelo rastro."},
+    {"short": "Git", "name": "Git · GitHub Actions", "slot": "Botas", "type": "Ferramentas", "icon": "git", "color": "#F05033",
+     "use": "Usado em: CI do AquaSense (lint, tipos, testes e build) e neste perfil.", "flavor": "Ctrl+Z com histórico."},
+    {"short": "Java", "name": "Java · Spring Boot", "slot": "Anel", "type": "Software", "icon": "springboot", "color": "#6DB33F",
+     "use": "Usado em: API REST da CPTM, com Jackson e JUnit.", "flavor": "14 endpoints, 9 controllers, 10 classes de teste."}
+  ],
+
+  "bag": [
+    ["proxmox", "#E57000", 1, 1, 2, 2],
+    ["espressif", "#E7352C", 3, 1, 1, 2],
+    ["raspberrypi", "#D1456A", 4, 1, 1, 2],
+    ["arduino", "#1FA9AE", 5, 1, 2, 1],
+    ["linux", "#FCC624", 7, 1, 1, 1],
+    ["micropython", "#E8E4D4", 8, 1, 1, 1],
+    ["mqtt", "#B77BB7", 5, 2, 1, 1],
+    ["wave", "#A3AD9F", 6, 2, 1, 1],
+    ["gate", "#A3AD9F", 7, 2, 1, 1],
+    ["tree", "#A3AD9F", 1, 3, 1, 1],
+    ["wall", "#E07A6E", 2, 3, 1, 1],
+    ["net", "#A3AD9F", 3, 3, 1, 1],
+    ["typescript", "#4A90E2", 5, 3, 1, 1],
+    ["html5", "#E34F26", 6, 3, 1, 1],
+    ["filter", "#E0906E", 7, 3, 1, 1],
+    ["jupyter", "#F37626", 1, 4, 1, 1],
+    ["lambda", "#F0A13A", 2, 4, 1, 1],
+    ["vitest", "#7AD89A", 3, 4, 1, 1],
+    ["bars", "#E8C547", 4, 4, 1, 1]
+  ],
+  "bag_text": [
+    ["Hardware", "ESP32 · Arduino UNO · Pi Pico · MicroPython · LogiSim"],
+    ["Protocolos", "I²C · UART · PWM · MQTT sobre TLS"],
+    ["Infra/sec", "Proxmox · AD/DC · IPFire · iptables · ufw · DNS/DHCP"],
+    ["Software", "TypeScript + React · HTML/CSS"],
+    ["Dados", "Jupyter · NumPy · pandas · Power BI · AWS Lambda"],
+    ["Testes", "Vitest · Playwright · JUnit · Postman"]
+  ],
+
+  "projects": [
+    {
+      "id": "infra-lab", "num": "01", "title": "Lab de infraestrutura", "tags": "infra · segurança", "period": "acadêmico",
+      "icon": "wall", "color": "#E07A6E",
+      "line": "Uma empresa em miniatura, do zero: AD/DC, rede segmentada, firewall IPFire e SIEM correlacionando eventos, tudo virtualizado no Proxmox. No fim, Kali Linux pra conferir se as regras seguram.",
+      "stack": ["Proxmox", "Windows Server", "AD/DC", "IPFire", "SIEM", "Kali"],
+      "repo": null
+    },
+    {
+      "id": "aquasense", "num": "02", "title": "AquaSense IoT", "tags": "iot · firmware · web", "period": "fev–jun 2026",
+      "icon": "espressif", "color": "#E7352C",
+      "line": "ESP32 mede 7 parâmetros da água, controla a bomba do coletor solar e publica via MQTT/TLS; do outro lado, dashboard React e skill da Alexa. Entregue para a Invivio Tecnologia, em equipe de três.",
+      "stack": ["ESP32", "C++", "MQTT/TLS", "React", "TypeScript", "AWS Lambda"],
+      "repo": "Hikaru-0gasawara/IoT-PoolHardWareTest"
+    },
+    {
+      "id": "cofre", "num": "03", "title": "Cofre eletrônico", "tags": "embarcados · c++", "period": "pessoal",
+      "icon": "chip", "color": "#F0CE6A",
+      "line": "O mesmo cofre portado para Arduino UNO, Raspberry Pi Pico (MicroPython) e ESP32: LCD I²C, teclado 3×4, servo e senha na NVS. O LCD foi controlado até por bit-banging.",
+      "stack": ["ESP32", "Arduino UNO", "Pi Pico", "MicroPython", "C++", "I²C"],
+      "credit": "baseado no cofre open source de Uri Shaked",
+      "repo": "Hikaru-0gasawara/IoT-SafeSistem"
+    },
+    {
+      "id": "cptm", "num": "04", "title": "Ativos da CPTM", "tags": "backend · java", "period": "fev–jul 2024",
+      "icon": "springboot", "color": "#6DB33F",
+      "line": "API REST em Spring Boot para trens, estações e linhas: 14 endpoints em 9 controllers, estatísticas da operação e 10 classes de teste em JUnit. Projeto entregue para a CPTM.",
+      "stack": ["Java", "Spring Boot", "REST", "Jackson", "JUnit", "Postman"],
+      "repo": "0tavio-Pires/Projeto_Back-End"
+    }
+  ],
+  "portfolio_card": {
+    "title": "Portifolio",
+    "line": "O site é a demonstração: um quarto em pixel art pra explorar, com TV 3D em WebGL próprio, passagens secretas, minijogos, 51 conquistas e um modo recrutador pra quem tem pressa.",
+    "stack": ["HTML", "CSS", "JavaScript", "React", "WebGL", "GitHub Pages"],
+    "langs": "PT · EN · 日本語",
+    "repo": "Hikaru-0gasawara/Portifolio"
+  },
+
+  "footer": {
+    "thanks": "obrigado pela visita",
+    "credits": "feito com solda, café e ctrl+z"
+  }
+}
