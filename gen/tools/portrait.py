@@ -24,12 +24,12 @@ OUT = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "portrait
 TINT = [(0.0, (0x26, 0x35, 0x2A)), (0.5, (0x8B, 0x96, 0x8A)), (0.8, (0xE8, 0xE4, 0xD4)), (1.0, (0xF0, 0xCE, 0x6A))]
 
 
-def _background(lum, sat, w, h):
+def _background(lum, sat, w, h, lum_min=0.78, sat_max=0.12):
     bg = [[False] * w for _ in range(h)]
     q = deque([(x, 0) for x in range(w)] + [(0, y) for y in range(h)] + [(w - 1, y) for y in range(h)])
     while q:
         x, y = q.popleft()
-        if bg[y][x] or not (lum[y][x] > 0.78 and sat[y][x] < 0.12):
+        if bg[y][x] or not (lum[y][x] > lum_min and sat[y][x] < sat_max):
             continue
         bg[y][x] = True
         for nx, ny in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
