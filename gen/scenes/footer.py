@@ -95,7 +95,7 @@ def render(cfg, data, path):
     # render stamp
     doc.add(f'<path d="M1 {H - 40.5}H{W - 1}" stroke="{LN}"/>')
     stamp = [("rendered ", "faint"), (f"{now:%Y-%m-%d %H:%M} UTC", "dim"), (" · ", "faint"),
-             ("refreshed daily by GitHub Actions", "dim"), (" · ", "faint"), ("just SVG, no JavaScript", "dim"),
+             ("refreshed every 3 hours by GitHub Actions", "dim"), (" · ", "faint"), ("just SVG, no JavaScript", "dim"),
              (" · ", "faint"), (cfg["footer"]["credits"], "gold")]
     doc.add(spans(20, H - 15, stamp, 11), text(W - 20, H - 15, "↑↑↓↓←→←→BA", "faint", 11, anchor="end"))
     doc.save(path)

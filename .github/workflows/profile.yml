@@ -2,7 +2,9 @@ name: render profile
 
 on:
   schedule:
-    - cron: "17 9 * * *"        # todo dia, 06:17 em São Paulo
+    # every 3 hours: GitHub often starts scheduled runs hours late, and a single
+    # daily run left the graphs up to a day and a half behind
+    - cron: "17 */3 * * *"
   workflow_dispatch:
   push:
     branches: [main]
@@ -38,7 +40,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add assets
-          git diff --cached --quiet && echo "nothing changed" && exit 0
+          # the footer's render stamp changes on every run; only commit when the data did
+          if [ -z "$(git diff --cached --name-only | grep -v '^assets/footer.svg$')" ]; then
+            echo "no new data"
+            exit 0
+          fi
           git commit -m "render: refresh panels $(date -u +%Y-%m-%d)"
           git pull --rebase -X theirs origin main
           git push
